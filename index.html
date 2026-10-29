@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terlingua Mesh — Free Off-Grid MeshCore Messaging</title>
+<meta name="description" content="Terlingua Mesh is a free, community MeshCore radio network across Terlingua Ranch. Text your neighbors with no cell signal, no internet and no monthly bill.">
+<meta property="og:title" content="Terlingua Mesh — Free Off-Grid Messaging for Terlingua Ranch">
+<meta property="og:description" content="A free, community MeshCore radio network. No towers. No bills. Just neighbors.">
+<meta property="og:url" content="https://terlingua-mesh.com/">
+<meta name="theme-color" content="#F6F1E6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0A84E0;
+    --blue-deep:#066BB8;
+    --ivory:#F6F1E6;
+    --ivory-2:#EFE8DA;
+    --charcoal:#1F2830;
+    --charcoal-2:#3A4550;
+    --sand:#CDB69A;
+    --sand-2:#E2D3BF;
+    --rule:#D9CFBF;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ivory);color:var(--charcoal);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--blue-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .label{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal-2)}
+  .label.blue{color:var(--blue)}
+  h1,h2,h3{font-weight:900;line-height:1.02;letter-spacing:-.01em;margin:0;text-transform:uppercase}
+  h2{font-size:clamp(34px,5vw,56px)}
+  h3{font-size:22px;letter-spacing:.01em}
+  p{margin:0 0 1em}
+  .rule{border:0;border-top:1px solid var(--rule);margin:0}
+
+  /* Header */
+  header.top{position:sticky;top:0;z-index:20;background:var(--ivory);
+             transform:translateZ(0);border-bottom:1px solid var(--rule)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--charcoal)}
+  .brand span{font-weight:900;font-size:20px;letter-spacing:.01em;text-transform:uppercase;white-space:nowrap}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{color:var(--charcoal);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  nav.links a:hover{color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.14em;text-transform:uppercase;padding:16px 26px;border-radius:999px;border:2px solid var(--blue);transition:background .15s,transform .15s}
+  .btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--charcoal);border-color:var(--charcoal)}
+  .btn.ghost:hover{background:var(--charcoal);color:var(--ivory)}
+  .btn.small{padding:10px 18px;font-size:12px}
+
+  /* Hero */
+  /* hero + promise band share the first screen; band sits on the fold */
+  .first-screen{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);
+                display:flex;flex-direction:column}
+  .hero{position:relative;overflow:hidden;padding:clamp(20px,3.2vh,48px) 0 0;
+        flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+  .hero-grid{display:grid;grid-template-columns:1fr;align-items:center;
+             flex:1 1 auto;align-content:center}
+  .hero h1{font-size:clamp(38px,min(6.4vw,8.8vh),88px)}
+  .hero h1 em{font-style:normal;color:var(--blue)}
+  .hero .lede{font-size:clamp(16px,min(1.9vw,2.3vh),21px);max-width:620px;
+              margin:clamp(12px,2vh,24px) 0 clamp(16px,2.4vh,30px);color:var(--charcoal-2)}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .landscape{display:block;width:100%;height:clamp(88px,13vh,150px);
+             margin-top:clamp(14px,2.8vh,40px);flex:0 0 auto}
+
+  /* Promise band */
+  .band{background:var(--charcoal);color:var(--ivory);flex:0 0 auto}
+  .band .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .band .item{padding:clamp(16px,3vh,34px) 24px;border-left:1px solid rgba(246,241,230,.14)}
+  .band .item:first-child{border-left:0;padding-left:0}
+  .band .big{font-weight:900;font-size:clamp(21px,min(2.3vw,3.4vh),30px);text-transform:uppercase;line-height:1}
+  .band .big b{color:var(--blue);font-weight:900}
+  .band .sub{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.72;margin-top:clamp(4px,1vh,8px);font-weight:600}
+
+  section{padding:104px 0}
+  .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+  .head p{color:var(--charcoal-2);margin:0;font-size:19px}
+  .head .label{display:block;margin-bottom:18px}
+
+  /* How it works */
+  .diagram{background:var(--ivory-2);border:1px solid var(--rule);border-radius:20px;padding:28px}
+  .diagram svg{width:100%;height:auto;display:block}
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+  .steps3 .n{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--blue);font-size:14px;letter-spacing:.1em}
+  .steps3 h3{margin:10px 0 10px}
+  .steps3 p{color:var(--charcoal-2);font-size:17px}
+
+  /* Services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+  .svc{padding:40px 32px 40px 0;border-bottom:1px solid var(--rule)}
+  .svc:not(:nth-child(3n+1)){padding-left:32px;border-left:1px solid var(--rule)}
+  .icon{width:76px;height:76px;border:5px solid var(--blue);border-radius:50%;display:grid;place-items:center;margin-bottom:22px}
+  .icon svg{width:36px;height:36px;stroke:var(--blue);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .svc h3{margin-bottom:10px}
+  .svc p{color:var(--charcoal-2);font-size:17px;margin:0}
+  .free{display:inline-block;background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.18em;padding:4px 10px;border-radius:999px;margin-bottom:14px;text-transform:uppercase}
+
+  /* When it matters */
+  .matters{background:var(--sand-2)}
+  .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .case{background:var(--ivory);border-radius:18px;padding:30px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+  .case .msg{grid-column:1/-1;font-family:"JetBrains Mono",monospace;font-size:14px;background:var(--charcoal);color:var(--ivory);border-radius:14px 14px 14px 4px;padding:14px 16px;line-height:1.5}
+  .case .msg .who{color:var(--blue);font-weight:700}
+  .case .msg .meta{display:block;opacity:.55;font-size:12px;margin-top:6px}
+  .case h3{font-size:20px;margin-bottom:6px}
+  .case p{margin:0;color:var(--charcoal-2);font-size:16px}
+  .case .icon{width:56px;height:56px;border-width:4px;margin:0}
+  .case .icon svg{width:26px;height:26px}
+
+  /* Get connected */
+  .connect-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+  ol.steps li{counter-increment:s;display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--rule)}
+  ol.steps li:last-child{border-bottom:1px solid var(--rule)}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15px;color:#fff;background:var(--blue);width:48px;height:48px;border-radius:50%;display:grid;place-items:center}
+  ol.steps h3{font-size:20px;margin:8px 0 8px}
+  ol.steps p{margin:0;color:var(--charcoal-2);font-size:17px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:13px;font-weight:600;border:1.5px solid var(--charcoal);border-radius:999px;padding:4px 12px}
+
+  .card{background:var(--charcoal);color:var(--ivory);border-radius:22px;padding:34px;position:sticky;top:100px}
+  .card .label{color:var(--sand)}
+  .card h3{font-size:28px;margin:12px 0 22px}
+  .settings{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(246,241,230,.15);border-radius:14px;overflow:hidden}
+  .settings div{background:#26313A;padding:16px 18px}
+  .settings .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.65;font-weight:700}
+  .settings .v{font-family:"JetBrains Mono",monospace;font-size:22px;font-weight:700;color:#fff;margin-top:4px}
+  .settings .v small{font-size:13px;opacity:.7;font-weight:500}
+  .cli{margin-top:18px;display:flex;gap:10px;align-items:center;background:#141B21;border-radius:12px;padding:12px 12px 12px 16px;font-family:"JetBrains Mono",monospace;font-size:14px}
+  .cli code{flex:1;overflow-x:auto;white-space:nowrap;color:#9FD3FF}
+  .cli button{font:inherit;font-family:"Archivo",sans-serif;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+  .card .note{font-size:14px;opacity:.75;margin:18px 0 0}
+  .card .channel{margin-top:22px;padding-top:22px;border-top:1px solid rgba(246,241,230,.15);font-size:15px}
+  .card .channel b{color:#fff}
+
+  /* Host a repeater */
+  .host{background:var(--blue);color:#fff;border-radius:28px;padding:64px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+  .host h2{color:#fff}
+  .host p{font-size:19px;opacity:.92;margin:20px 0 28px;max-width:560px}
+  .host .btn{background:var(--ivory);color:var(--charcoal);border-color:var(--ivory)}
+  .host .btn:hover{background:#fff}
+  .host ul{list-style:none;margin:0;padding:0;font-weight:600}
+  .host li{padding:12px 0;border-top:1px solid rgba(255,255,255,.28);display:flex;gap:12px}
+  .host li::before{content:"";flex:0 0 10px;height:10px;margin-top:9px;border-radius:50%;background:#fff}
+
+  /* Guidelines + FAQ */
+  .two{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+  .notice{border:3px solid var(--charcoal);border-radius:18px;padding:28px}
+  .notice h3{font-size:20px;margin-bottom:10px}
+  .notice p{font-size:16px;color:var(--charcoal-2);margin:0}
+  .rules{list-style:none;padding:0;margin:28px 0 0}
+  .rules li{padding:14px 0;border-top:1px solid var(--rule);font-size:17px}
+  .rules li b{text-transform:uppercase;font-size:13px;letter-spacing:.14em;display:block;color:var(--blue)}
+  details{border-top:1px solid var(--rule);padding:4px 0}
+  details:last-child{border-bottom:1px solid var(--rule)}
+  summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-weight:800;font-size:19px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:28px;font-weight:500;color:var(--blue);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--charcoal-2);font-size:17px;margin:0 0 20px;max-width:680px}
+
+  /* Footer */
+  footer{background:var(--charcoal);color:var(--ivory);padding:72px 0 40px}
+  .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+  .foot .brand{color:var(--ivory)}
+  .foot h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 16px;color:var(--sand)}
+  .foot a{color:var(--ivory);text-decoration:none;opacity:.85}
+  .foot a:hover{opacity:1;color:#9FD3FF}
+  .foot ul{list-style:none;margin:0;padding:0;line-height:2}
+  .foot p{opacity:.75;font-size:16px;margin-top:16px;max-width:360px}
+  .fine{margin-top:56px;padding-top:24px;border-top:1px solid rgba(246,241,230,.15);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;opacity:.6;letter-spacing:.04em}
+
+  @media (max-width:960px){
+    nav.links a:not(.btn){display:none}
+    .head,.connect-grid,.two,.host{grid-template-columns:1fr}
+    .band .wrap{grid-template-columns:repeat(2,1fr)}
+    .band .item:nth-child(3){border-left:0;padding-left:0}
+    .services{grid-template-columns:1fr 1fr}
+    .svc,.svc:not(:nth-child(3n+1)){padding:32px 24px 32px 0;border-left:0}
+    .svc:nth-child(2n){padding-left:24px;border-left:1px solid var(--rule)}
+    .steps3{grid-template-columns:1fr}
+    .cases{grid-template-columns:1fr}
+    .card{position:static}
+    .host{padding:40px 28px}
+    .foot{grid-template-columns:1fr 1fr}
+    .foot>div:first-child{grid-column:1/-1}
+  }
+  @media (max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:0 16px}
+    section{padding:72px 0}
+    .hero{padding-top:clamp(18px,3vh,40px)}
+    .brand span{font-size:16px}
+    nav.links .btn{white-space:nowrap;padding:9px 14px;font-size:11px;letter-spacing:.1em}
+    .services{grid-template-columns:1fr}
+    .svc:nth-child(2n){padding-left:0;border-left:0}
+    .band .item{padding:24px 12px 24px 0}
+    .band .item:nth-child(2n){padding-left:16px}
+    .band .big{font-size:22px}
+    .settings .v{font-size:18px}
+    .card{padding:24px}
+    ol.steps li{grid-template-columns:52px 1fr;gap:14px}
+    ol.steps li::before{width:42px;height:42px;font-size:13px}
+    .foot{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Terlingua Mesh home">
+      <span>Terlingua Mesh</span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#services">Services</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn small" href="#connect">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="first-screen">
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label blue">Off-grid messaging · Terlingua Ranch, Texas</div>
+      <h1 style="margin-top:clamp(10px,1.8vh,20px)">No towers.<br>No bills.<br><em>Just neighbors.</em></h1>
+      <p class="lede">Terlingua Mesh is a free, community MeshCore radio network across Terlingua Ranch. Send text messages to the folks down the road when there's no cell signal, no internet, and the power's out — for nothing, forever.</p>
+      <div class="ctas">
+        <a class="btn" href="#connect">Get on the mesh</a>
+        <a class="btn ghost" href="#settings">Network settings</a>
+      </div>
+    </div>
+  </div>
+  <svg class="landscape" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#E2D3BF" d="M0 120 L80 112 L140 96 L210 98 L260 70 L330 70 L360 92 L460 100 L540 86 L600 60 L690 58 L720 84 L820 96 L900 80 L960 52 L1080 50 L1110 78 L1200 90 L1280 72 L1340 76 L1440 92 L1440 170 L0 170Z"/>
+    <path fill="#CDB69A" d="M0 140 L120 134 L220 120 L300 126 L380 112 L470 124 L560 130 L640 116 L700 104 L760 104 L800 122 L900 132 L1000 122 L1080 108 L1160 110 L1220 128 L1330 134 L1440 124 L1440 170 L0 170Z"/>
+    <!-- repeater masts on the mesas -->
+    <g stroke="#1F2830" stroke-width="2.5" fill="none" stroke-linecap="round">
+      <line x1="295" y1="70" x2="295" y2="34"/><line x1="286" y1="42" x2="304" y2="42"/>
+      <line x1="645" y1="59" x2="645" y2="22"/><line x1="636" y1="30" x2="654" y2="30"/>
+      <line x1="1020" y1="51" x2="1020" y2="14"/><line x1="1011" y1="22" x2="1029" y2="22"/>
+    </g>
+    <g fill="#0A84E0"><circle cx="295" cy="32" r="4"/><circle cx="645" cy="20" r="4"/><circle cx="1020" cy="12" r="4"/></g>
+    <g stroke="#0A84E0" stroke-width="2" fill="none" stroke-dasharray="3 7" opacity=".7">
+      <path d="M299 30 Q470 -10 641 18"/><path d="M649 18 Q835 -20 1016 10"/>
+    </g>
+  </svg>
+</section>
+
+<!-- PROMISE BAND -->
+<div class="band">
+  <div class="wrap">
+    <div class="item"><div class="big"><b>$0</b> / month</div><div class="sub">Free to the community</div></div>
+    <div class="item"><div class="big">No cell</div><div class="sub">Radio-to-radio over LoRa</div></div>
+    <div class="item"><div class="big">Encrypted</div><div class="sub">Private direct messages</div></div>
+    <div class="item"><div class="big">Solar</div><div class="sub">Repeaters run off-grid</div></div>
+  </div>
+</div>
+</div><!-- /first-screen -->
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="label blue">How it works</span>
+        <h2>Your message hops ridge to ridge.</h2>
+      </div>
+      <p>MeshCore is open-source firmware for small, low-power LoRa radios. Your phone talks to your radio over Bluetooth. Your radio talks to ours — solar repeaters we keep up on high ground — and they pass your message along until it reaches your neighbor. No SIM card, no Wi-Fi, no internet anywhere in the chain.</p>
+    </div>
+
+    <div class="diagram" role="img" aria-label="Diagram: a phone connects by Bluetooth to a small radio, which sends to a mesa-top repeater, which relays to another repeater and on to a neighbor's radio and phone.">
+      <svg viewBox="0 0 1100 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0A84E0"/></marker>
+        </defs>
+        <path d="M0 250 L180 240 L260 190 L380 186 L420 236 L620 244 L700 182 L820 178 L860 232 L1100 246 L1100 300 L0 300Z" fill="#E2D3BF"/>
+        <!-- you -->
+        <g transform="translate(40,170)">
+          <rect x="0" y="0" width="38" height="66" rx="7" fill="#1F2830"/><rect x="5" y="8" width="28" height="44" rx="2" fill="#9FD3FF"/>
+          <rect x="62" y="22" width="34" height="46" rx="6" fill="#1F2830"/><line x1="88" y1="22" x2="88" y2="-6" stroke="#1F2830" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="79" cy="40" r="5" fill="#0A84E0"/>
+        </g>
+        <text x="20" y="276" font-family="Archivo" font-weight="800" font-size="14" letter-spacing="2" fill="#1F2830">YOU + RADIO</text>
+        <path d="M80 200 Q95 190 100 205" stroke="#0A84E0" stroke-width="2.5" fill="none" stroke-dasharray="3 4"/>
+        <text x="58" y="160" font-family="JetBrains Mono" font-size="12" fill="#3A4550">bluetooth</text>
+        <!-- repeater 1 -->
+        <g transform="translate(320,60)">
+          <line x1="0" y1="126" x2="0" y2="10" stroke="#1F2830" stroke-width="5"/><line x1="-16" y1="30" x2="16" y2="30" stroke="#1F2830" stroke-width="4"/>
+          <rect x="-24" y="92" width="48" height="10" rx="2" fill="#0A84E0" transform="rotate(-18 0 97)"/>
+          <circle cx="0" cy="6" r="8" fill="#0A84E0"/>
+        </g>
+        <text x="262" y="214" font-family="Archivo" font-weight="800" font-size="14" letter-spacing="2" fill="#1F2830">REPEATER</text>
+        <!-- repeater 2 -->
+        <g transform="translate(760,52)">
+          <line x1="0" y1="126" x2="0" y2="10" stroke="#1F2830" stroke-width="5"/><line x1="-16" y1="30" x2="16" y2="30" stroke="#1F2830" stroke-width="4"/>
+          <rect x="-24" y="92" width="48" height="10" rx="2" fill="#0A84E0" transform="rotate(-18 0 97)"/>
+          <circle cx="0" cy="6" r="8" fill="#0A84E0"/>
+        </g>
+        <text x="702" y="206" font-family="Archivo" font-weight="800" font-size="14" letter-spacing="2" fill="#1F2830">REPEATER</text>
+        <!-- neighbor -->
+        <g transform="translate(960,170)">
+          <rect x="0" y="22" width="34" height="46" rx="6" fill="#1F2830"/><line x1="8" y1="22" x2="8" y2="-6" stroke="#1F2830" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="17" cy="40" r="5" fill="#0A84E0"/>
+          <rect x="58" y="0" width="38" height="66" rx="7" fill="#1F2830"/><rect x="63" y="8" width="28" height="44" rx="2" fill="#9FD3FF"/>
+        </g>
+        <text x="944" y="276" font-family="Archivo" font-weight="800" font-size="14" letter-spacing="2" fill="#1F2830">YOUR NEIGHBOR</text>
+        <!-- hops -->
+        <path d="M150 160 Q230 70 308 66" stroke="#0A84E0" stroke-width="3" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+        <path d="M336 60 Q540 -6 746 56" stroke="#0A84E0" stroke-width="3" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+        <path d="M774 62 Q900 80 964 160" stroke="#0A84E0" stroke-width="3" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+        <text x="190" y="92" font-family="JetBrains Mono" font-size="12" fill="#3A4550">LoRa · 915 MHz</text>
+        <text x="500" y="20" font-family="JetBrains Mono" font-size="12" fill="#3A4550">relayed miles across the ranch</text>
+      </svg>
+    </div>
+
+    <div class="steps3">
+      <div><div class="n">01 — YOUR RADIO</div><h3>A pocket-size node</h3><p>A small LoRa radio — many cost less than a tank of gas — paired with the free MeshCore app on your phone or computer.</p></div>
+      <div><div class="n">02 — OUR REPEATERS</div><h3>Up on the high ground</h3><p>Terlingua Mesh installs and maintains solar-powered repeaters with a clear view across the ranch, so your signal carries well past your own ridge.</p></div>
+      <div><div class="n">03 — THE MESH</div><h3>Everyone helps everyone</h3><p>Every repeater added by a neighbor makes the network reach farther and hold up better. Nobody owns it, and it doesn't shut off when the grid does.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="label blue">Community services</span>
+        <h2>All of it free. All of it local.</h2>
+      </div>
+      <p>We're a phone company in spirit — the kind that shows up with a truck and a ladder. We don't sell plans. We build and keep up the network, and we help anyone on the ranch get connected to it.</p>
+    </div>
+
+    <div class="services">
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M8 22h8"/><path d="M8.5 5.5a5 5 0 0 1 7 0"/><path d="M5.6 2.6a9 9 0 0 1 12.8 0"/><circle cx="12" cy="9" r="1.2"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Repeater coverage</h3>
+        <p>Solar repeaters on high ground, installed and maintained by Terlingua Mesh, carrying messages across the ranch day and night.</p>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Public ranch channel</h3>
+        <p>A shared community channel for road conditions, lost dogs, water hauls, weather, and the occasional potluck announcement.</p>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M12 7v5"/><path d="M9.5 9.5 12 12l2.5-2.5"/><path d="M9 17h6"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Radio flashing &amp; setup</h3>
+        <p>Bring your radio by and we'll load the MeshCore firmware, set it to our network, and walk you through the app.</p>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c.6-3.6 3-5.5 6-5.5s5.4 1.9 6 5.5"/><path d="M15.5 14.6c2.6-.2 4.8 1.4 5.5 4.4"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Community clinics</h3>
+        <p>Regular get-togethers to troubleshoot radios, talk antennas and placement, and get new neighbors on the air.</p>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6.5V12c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6.5z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Private messaging</h3>
+        <p>Direct messages between you and another person are encrypted end to end. No account, no phone number, no data collected.</p>
+      </div>
+      <div class="svc">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M6 6h12"/><path d="M8 10h8"/><path d="M6 6 4 9M18 6l2 3"/><path d="M9 22h6"/></svg></div>
+        <span class="free">Free</span>
+        <h3>Repeater help</h3>
+        <p>Want to host a node at your place? We'll help you plan the site, build the solar kit, and tie it into the network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN IT MATTERS -->
+<section class="matters">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="label blue">When it matters</span>
+        <h2>Built for life out here.</h2>
+      </div>
+      <p>Out on the ranch roads, the cell signal comes and goes. The mesh doesn't depend on it. It keeps working on batteries and sunshine when everything else drops.</p>
+    </div>
+    <div class="cases">
+      <div class="case">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 16a5 5 0 1 1 1.6-9.7A6 6 0 0 1 20 9a4 4 0 0 1-1 7.9"/><path d="m13 12-3 5h4l-3 5"/></svg></div>
+        <div><h3>Storm knocks out power</h3><p>Check on the neighbors and share what's working, even with the lines down.</p></div>
+        <div class="msg"><span class="who">#ranch</span> Lost power on our end, gen's running. Anybody need ice or a charge? 🔋<span class="meta">via 2 hops · 3 min ago</span></div>
+      </div>
+      <div class="case">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 18c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M3 13c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0"/><path d="M12 3v6"/><path d="m9.5 6.5 2.5 2.5 2.5-2.5"/></svg></div>
+        <div><h3>Roads washed out</h3><p>Spread the word about which crossings are running and which roads to avoid.</p></div>
+        <div class="msg"><span class="who">#ranch</span> Low-water crossing past the mailboxes is running hard. Go around. 🚧<span class="meta">via 3 hops · 12 min ago</span></div>
+      </div>
+      <div class="case">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10l6-5 6 5v10"/><path d="M10 20v-5h4v5"/></svg></div>
+        <div><h3>No signal at home</h3><p>Plenty of places on the ranch never had good service. Now you can still reach people.</p></div>
+        <div class="msg"><span class="who">→ Dale</span> Heading to town Saturday, need anything from the store?<span class="meta">direct · encrypted</span></div>
+      </div>
+      <div class="case">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg></div>
+        <div><h3>Out on the land</h3><p>Carry a pocket radio on a hike or a drive and stay in touch with home base.</p></div>
+        <div class="msg"><span class="who">→ Home</span> Made it to the overlook. Back before dark. 🌄<span class="meta">direct · encrypted</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET CONNECTED -->
+<section id="connect">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="label blue">Get on the mesh</span>
+        <h2>Connected in an afternoon.</h2>
+      </div>
+      <p>You'll need one small radio and a phone. If any of this sounds like too much, bring your radio to a clinic and we'll do it with you.</p>
+    </div>
+    <div class="connect-grid">
+      <ol class="steps">
+        <li><div><h3>Get a LoRa radio</h3><p>Pick any MeshCore-compatible device made for the US 915 MHz band. Ask us before you buy and we'll point you at what's working well on the ranch.</p>
+          <div class="chips"><span class="chip">Heltec</span><span class="chip">LilyGO</span><span class="chip">RAK WisBlock</span><span class="chip">Seeed SenseCAP</span></div></div></li>
+        <li><div><h3>Flash Companion firmware</h3><p>Plug the radio into a computer and load the MeshCore <b>Companion</b> firmware using the web flasher at <a href="https://flasher.meshcore.co.uk" target="_blank" rel="noopener">flasher.meshcore.co.uk</a>. It takes about two minutes in Chrome or Edge.</p></div></li>
+        <li><div><h3>Install the MeshCore app</h3><p>Free for iPhone, Android, and desktop. Pair it with your radio over Bluetooth and set a display name your neighbors will recognize.</p></div></li>
+        <li><div><h3>Match our radio settings</h3><p>Set your radio to the Terlingua Mesh network settings shown here. Frequency, bandwidth, and spreading factor have to match exactly or you won't hear anyone.</p></div></li>
+        <li><div><h3>Send an advert &amp; say howdy</h3><p>Tap the advert button so others can find you, then post a hello on the public channel. Welcome to the mesh.</p></div></li>
+      </ol>
+
+      <aside class="card" id="settings" aria-labelledby="settings-title">
+        <span class="label">Network settings</span>
+        <h3 id="settings-title">Terlingua Mesh</h3>
+        <div class="settings">
+          <div><div class="k">Frequency</div><div class="v">910.525 <small>MHz</small></div></div>
+          <div><div class="k">Bandwidth</div><div class="v">62.5 <small>kHz</small></div></div>
+          <div><div class="k">Spreading factor</div><div class="v">SF7</div></div>
+          <div><div class="k">Coding rate</div><div class="v">CR5</div></div>
+        </div>
+        <div class="cli">
+          <code id="cli">set radio 910.525,62.5,7,5</code>
+          <button type="button" id="copy">Copy</button>
+        </div>
+        <p class="note">These match the “USA/Canada” preset in the MeshCore app. The command above is for radios configured over a USB console.</p>
+        <div class="channel">Public channel: <b>#ranch</b><br><span style="opacity:.75">Stop by a clinic or message us for the channel key.</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- HOST A REPEATER -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="host">
+      <div>
+        <span class="label" style="color:#fff;opacity:.85">Grow the network</span>
+        <h2 style="margin-top:18px">Got a ridge? Host a repeater.</h2>
+        <p>Every high spot with a view and some sun can extend the mesh to a whole new corner of the ranch. We'll help with the plan, the gear list, and the install.</p>
+        <a class="btn" href="mailto:hello@terlingua-mesh.com?subject=Hosting%20a%20repeater">Talk to us about hosting</a>
+      </div>
+      <ul>
+        <li>Clear line of sight beats raw height</li>
+        <li>A small solar panel and battery is all it needs</li>
+        <li>Runs quietly on its own — no maintenance most days</li>
+        <li>You'll be helping every neighbor in range</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- GUIDELINES + FAQ -->
+<section id="faq">
+  <div class="wrap two">
+    <div>
+      <span class="label blue">Good neighbor rules</span>
+      <h2 style="margin-top:18px;font-size:clamp(30px,4vw,44px)">Keep the airwaves friendly.</h2>
+      <ul class="rules">
+        <li><b>Be kind</b>The public channel is the whole ranch's porch. Act like it.</li>
+        <li><b>Keep it short</b>Airtime is shared. Brief messages keep the mesh fast for everyone.</li>
+        <li><b>No selling or spam</b>Community notices are welcome. Advertising isn't.</li>
+        <li><b>Mind the private stuff</b>Use direct messages for anything personal.</li>
+      </ul>
+      <div class="notice" style="margin-top:32px">
+        <h3>⚠ The mesh is not 911</h3>
+        <p>Terlingua Mesh is a volunteer community network with no guarantee of delivery. In an emergency, always try to reach 911 or emergency services first by any means you have.</p>
+      </div>
+    </div>
+    <div>
+      <span class="label blue">Questions</span>
+      <h2 style="margin-top:18px;margin-bottom:24px;font-size:clamp(30px,4vw,44px)">Asked around the ranch.</h2>
+      <details><summary>Is it really free?</summary><p>Yes. There's no plan, no subscription and no account. Your only cost is the radio you buy once. Terlingua Mesh maintains the shared repeaters as a service to the community.</p></details>
+      <details><summary>Do I need a ham radio license?</summary><p>No. MeshCore radios in the US operate in the unlicensed 902–928 MHz ISM band using low power, so anyone can use them.</p></details>
+      <details><summary>Is it the internet? Can I text a regular phone number?</summary><p>No — and that's the point. The mesh only connects MeshCore radios to each other. It can't reach regular phone numbers or websites, which is exactly why it keeps working when those are down.</p></details>
+      <details><summary>Who can read my messages?</summary><p>Direct messages are encrypted between you and the person you're writing to. Messages on the public channel can be read by anyone who has the channel key, so treat it like a bulletin board.</p></details>
+      <details><summary>How far will my radio reach?</summary><p>On its own, a handheld radio might reach a few miles depending on terrain. Through our repeaters on high ground, your message can travel much farther across the ranch. Getting your antenna up high and clear of obstacles makes a big difference.</p></details>
+      <details><summary>How's the battery life?</summary><p>LoRa radios sip power. Many companion radios run for days on a charge, and they charge off any USB port, power bank, or small solar panel.</p></details>
+      <details><summary>Is this the same as Meshtastic?</summary><p>They're both LoRa mesh projects, but they're different systems and don't talk to each other. Our network runs MeshCore, so make sure your radio has MeshCore firmware.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span>Terlingua Mesh</span></a>
+        <p>Free, off-grid messaging for Terlingua Ranch. Clean. Strong. Reliable.</p>
+      </div>
+      <div>
+        <h4>Network</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#connect">Get on the mesh</a></li>
+          <li><a href="#settings">Radio settings</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@terlingua-mesh.com">hello@terlingua-mesh.com</a></li>
+          <li><a href="https://meshcore.io" target="_blank" rel="noopener">About MeshCore</a></li>
+          <li><a href="https://flasher.meshcore.co.uk" target="_blank" rel="noopener">MeshCore web flasher</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© <span id="yr">2026</span> Terlingua Mesh · Terlingua Ranch, Texas</span>
+      <span>A volunteer community network. Not affiliated with any telephone carrier.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var b=document.getElementById('copy'),c=document.getElementById('cli');
+    if(b&&c)b.addEventListener('click',function(){
+      var t=c.textContent;
+      var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){})}
+    });
+    var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
